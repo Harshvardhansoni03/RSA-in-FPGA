@@ -1,13 +1,13 @@
 `timescale 1ns/1ps
-module rsa_encrypt(
+module rsa_decrypt(
     input  wire clk,
     input  wire start,
-    input  wire [7:0] plain,
-    output reg  [7:0] cipher,
+    input  wire [7:0] cipher_in,
+    output reg  [7:0] plain,
     output reg  busy
 );
     parameter integer n = 143;
-    parameter integer e = 7;
+    parameter integer d = 103;
 
     reg [7:0] exp;
     reg [31:0] base, result;
@@ -21,11 +21,11 @@ module rsa_encrypt(
     always @(posedge clk) begin
         case(state)
             IDLE: begin
-                cipher <= 0;
-                busy   <= 0;
+                plain <= 0;
+                busy  <= 0;
                 if (start) begin
-                    base   <= plain % n;
-                    exp    <= e;
+                    base   <= cipher_in % n;
+                    exp    <= d;
                     result <= 1;
                     busy   <= 1;
                     state  <= CALC;
@@ -39,7 +39,7 @@ module rsa_encrypt(
                     base <= (base * base) % n;
                     exp  <= exp >> 1;
                 end else begin
-                    cipher <= result[7:0];
+                    plain  <= result[7:0];
                     busy   <= 0;
                     state  <= DONE;
                 end

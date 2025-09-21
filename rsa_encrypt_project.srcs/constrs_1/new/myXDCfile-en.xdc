@@ -56,3 +56,7 @@ set_property PACKAGE_PIN U18 [get_ports btnC]
 set_property IOSTANDARD LVCMOS33 [get_ports btnC]
 
 create_clock -period 10.000 -name sys_clk -waveform {0 5} [get_ports clk]
+## Up pushbutton (BTNU)
+set_property PACKAGE_PIN M18 [get_ports {btnU}]
+set_property IOSTANDARD LVCMOS33 [get_ports {btnU}]
+

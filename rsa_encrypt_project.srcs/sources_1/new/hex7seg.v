@@ -1,12 +1,9 @@
-`timescale 1ns / 1ps
-// Hex to Seven-Segment Decoder
-
 module hex7seg(
-    input wire [3:0] x,       // 4-bit input
-    output reg [6:0] a_to_g   // 7-seg output (active low)
+    input  [3:0] x,
+    output reg [6:0] a_to_g
 );
     always @(*) begin
-        case (x)
+        case(x)
             4'h0: a_to_g = 7'b0000001;
             4'h1: a_to_g = 7'b1001111;
             4'h2: a_to_g = 7'b0010010;
@@ -23,7 +20,7 @@ module hex7seg(
             4'hD: a_to_g = 7'b1000010;
             4'hE: a_to_g = 7'b0110000;
             4'hF: a_to_g = 7'b0111000;
-            default: a_to_g = 7'b0000001; // show "0"
+            default: a_to_g = 7'b1111111;
         endcase
     end
 endmodule
