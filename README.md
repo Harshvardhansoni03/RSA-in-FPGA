@@ -38,3 +38,7 @@ The design follows a modular architecture with `top.v` acting as the **controlle
 | **Private Exp (d)**| `17'd47345`          | Used in decryption              |
 | **Message**       | `rishit15`           | Wi-Fi key (packed as 64’h7269736869743135) |
 
+---
+
+## 🛠️ Demo Video (Youtube)
+- **Youtube Video Link**:  https://youtu.be/F3CYXTgxV_k
